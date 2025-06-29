@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Best Boyfriend Grievance Portal ❤️💙</title>
+  <style>
+    body {
+      background-color: #fdf6f0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #5a3e36;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    h1 {
+      text-align: center;
+      color: #b17b7b;
+    }
+
+    select, textarea, input[type="file"], button {
+      display: block;
+      width: 100%;
+      margin: 1rem 0;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #d6b7aa;
+      background-color: #fffaf7;
+    }
+
+    button {
+      background-color: #deb2a3;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #b17b7b;
+    }
+
+    .grievance-log {
+      margin-top: 2rem;
+      background-color: #fef3ed;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+
+    .grievance-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #e2cfc2;
+      padding-bottom: 1rem;
+    }
+
+    .grievance-item textarea {
+      width: 100%;
+    }
+
+    .about {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #a08072;
+      padding-top: 2rem;
+      border-top: 1px dashed #d6b7aa;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Best Boyfriend Grievance Portal ❤️💙</h1>
+
+<form id="grievanceForm">
+  <label for="type">Complaint Type:</label>
+  <select id="type" required>
+    <option>Didn’t share Dohful coffee ☕</option>
+    <option>Did not share a cookie 🍪</option>
+    <option>Ate dosa all alone 😔</option>
+    <option>Did not kiss me goodbye 😢</option>
+    <option>Ignored me 😤</option>
+    <option>Didn’t text back 🐢</option>
+    <option>Other 🤨</option>
+  </select>
+
+  <label for="details">Details:</label>
+  <textarea id="details" rows="4" required></textarea>
+
+  <label for="evidence">Upload Evidence (optional):</label>
+  <input type="file" id="evidence">
+
+  <button type="submit">Submit Grievance 💔</button>
+</form>
+
+<div class="grievance-log" id="log">
+  <h3>📜 Past Complaints:</h3>
+</div>
+
+<div class="about">
+  About the author: smart, caring, and likes cricket 🏏
+</div>
+
+<!-- EmailJS Library -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  // ✅ Initialize EmailJS with your actual public key
+  (function() {
+    emailjs.init("YOUR_PUBLIC_KEY_HERE"); // <-- Replace this with your public key from EmailJS
+  })();
+
+  const form = document.getElementById("grievanceForm");
+  const log = document.getElementById("log");
+
+  function saveGrievance(type, details) {
+    const id = Date.now();
+    const item = { id, type, details };
+    localStorage.setItem(id, JSON.stringify(item));
+    displayGrievances();
+  }
+
+  function displayGrievances() {
+    log.innerHTML = "<h3>📜 Past Complaints:</h3>";
+    Object.keys(localStorage).sort().forEach(key => {
+      const data = JSON.parse(localStorage.getItem(key));
+      if (data?.type) {
+        log.innerHTML += `
+          <div class="grievance-item">
+            <strong>${data.type}</strong><br>
+            <textarea onchange="updateGrievance('${key}', this.value)">${data.details}</textarea>
+          </div>
+        `;
+      }
+    });
+  }
+
+  function updateGrievance(id, newDetails) {
+    const item = JSON.parse(localStorage.getItem(id));
+    item.details = newDetails;
+    localStorage.setItem(id, JSON.stringify(item));
+  }
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const type = document.getElementById("type").value;
+    const details = document.getElementById("details").value;
+    
+    const herEmail = "HER_EMAIL_GOES_HERE"; // 🔄 Replace this with her actual email
+
+    emailjs.send("service_su2vb15", "template_61i9erk", {
+      grievance_type: type,
+      grievance_details: details,
+      to_email: herEmail
+    }).then(() => {
+      alert("Grievance submitted successfully 🥹❤️");
+      saveGrievance(type, details);
+      form.reset();
+    }).catch(err => {
+      alert("Failed to send grievance 😭 Check console");
+      console.error(err);
+    });
+  });
+
+  displayGrievances();
+</script>
+
+</body>
+</html>
+
