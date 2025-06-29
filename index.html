@@ -1,170 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Best Boyfriend Grievance Portal ❤️💙</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ananya's Grievance Portal ❤️💙</title>
   <style>
     body {
-      background-color: #fdf6f0;
       font-family: 'Segoe UI', sans-serif;
-      color: #5a3e36;
-      padding: 2rem;
-      max-width: 600px;
-      margin: auto;
+      background-color: #fceef1;
+      color: #4b2e2e;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: #fff5f7;
+      border: 2px solid #dab3b3;
       border-radius: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
     }
 
     h1 {
       text-align: center;
-      color: #b17b7b;
+      font-size: 26px;
+      color: #7b3e3e;
+      margin-bottom: 30px;
     }
 
-    select, textarea, input[type="file"], button {
+    label {
       display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, select, textarea, button {
       width: 100%;
-      margin: 1rem 0;
       padding: 10px;
-      font-size: 1rem;
-      border-radius: 10px;
-      border: 1px solid #d6b7aa;
-      background-color: #fffaf7;
+      margin-top: 8px;
+      border-radius: 8px;
+      border: 1px solid #d8a7a7;
+      font-size: 16px;
     }
 
     button {
-      background-color: #deb2a3;
+      margin-top: 20px;
+      background-color: #d18686;
       color: white;
-      font-weight: bold;
+      border: none;
       cursor: pointer;
-      transition: 0.3s;
     }
 
     button:hover {
-      background-color: #b17b7b;
+      background-color: #ba6b6b;
     }
 
-    .grievance-log {
-      margin-top: 2rem;
-      background-color: #fef3ed;
-      padding: 1rem;
-      border-radius: 10px;
-    }
-
-    .grievance-item {
-      margin-bottom: 1rem;
-      border-bottom: 1px solid #e2cfc2;
-      padding-bottom: 1rem;
-    }
-
-    .grievance-item textarea {
-      width: 100%;
-    }
-
-    .about {
+    footer {
       text-align: center;
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #a08072;
-      padding-top: 2rem;
-      border-top: 1px dashed #d6b7aa;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #a87c7c;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Best Boyfriend Grievance Portal ❤️💙</h1>
 
-<h1>Best Boyfriend Grievance Portal ❤️💙</h1>
+    <form action="https://formsubmit.co/el/yerenu" method="POST">
+      <!-- Hidden Fields -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="Grievance Filed 💔">
+      <input type="hidden" name="_template" value="box">
+      <input type="hidden" name="_autoresponse" value="Grievance filed, beautiful. I'll get back to you 💌">
 
-<form id="grievanceForm">
-  <label for="type">Complaint Type:</label>
-  <select id="type" required>
-    <option>Didn’t share Dohful coffee ☕</option>
-    <option>Did not share a cookie 🍪</option>
-    <option>Ate dosa all alone 😔</option>
-    <option>Did not kiss me goodbye 😢</option>
-    <option>Ignored me 😤</option>
-    <option>Didn’t text back 🐢</option>
-    <option>Other 🤨</option>
-  </select>
+      <!-- Ask for her email (required) -->
+      <label for="heremail">Your Email</label>
+      <input type="email" id="heremail" name="email" placeholder="yourlovely@email.com" required>
 
-  <label for="details">Details:</label>
-  <textarea id="details" rows="4" required></textarea>
+      <!-- Grievance category -->
+      <label for="category">Grievance Type</label>
+      <select name="category" id="category" required>
+        <option value="Didn’t share dohful coffee">Didn’t share dohful coffee</option>
+        <option value="Did not share a cookie">Did not share a cookie</option>
+        <option value="Ate dosa all alone">Ate dosa all alone</option>
+        <option value="Did not kiss me goodbye">Did not kiss me goodbye</option>
+        <option value="Replied late to texts">Replied late to texts</option>
+        <option value="Did not say goodnight">Did not say goodnight</option>
+      </select>
 
-  <label for="evidence">Upload Evidence (optional):</label>
-  <input type="file" id="evidence">
+      <!-- Optional message -->
+      <label for="message">Extra Comments</label>
+      <textarea id="message" name="message" rows="4" placeholder="Tell him how he messed up 😭"></textarea>
 
-  <button type="submit">Submit Grievance 💔</button>
-</form>
+      <button type="submit">File Grievance 💔</button>
+    </form>
 
-<div class="grievance-log" id="log">
-  <h3>📜 Past Complaints:</h3>
-</div>
+    <footer>
+      About the author: Smart, caring, and likes cricket 🏏
+    </footer>
+  </div>
+</body>
+</html>
 
-<div class="about">
-  About the author: smart, caring, and likes cricket 🏏
-</div>
-
-<!-- EmailJS Library -->
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  // ✅ Initialize EmailJS with your actual public key
-  (function() {
-    emailjs.init("YOUR_PUBLIC_KEY_HERE"); // <-- Replace this with your public key from EmailJS
-  })();
-
-  const form = document.getElementById("grievanceForm");
-  const log = document.getElementById("log");
-
-  function saveGrievance(type, details) {
-    const id = Date.now();
-    const item = { id, type, details };
-    localStorage.setItem(id, JSON.stringify(item));
-    displayGrievances();
-  }
-
-  function displayGrievances() {
-    log.innerHTML = "<h3>📜 Past Complaints:</h3>";
-    Object.keys(localStorage).sort().forEach(key => {
-      const data = JSON.parse(localStorage.getItem(key));
-      if (data?.type) {
-        log.innerHTML += `
-          <div class="grievance-item">
-            <strong>${data.type}</strong><br>
-            <textarea onchange="updateGrievance('${key}', this.value)">${data.details}</textarea>
-          </div>
-        `;
-      }
-    });
-  }
-
-  function updateGrievance(id, newDetails) {
-    const item = JSON.parse(localStorage.getItem(id));
-    item.details = newDetails;
-    localStorage.setItem(id, JSON.stringify(item));
-  }
-
-  form.addEventListener("submit", function(e) {
-    e.preventDefault();
-    const type = document.getElementById("type").value;
-    const details = document.getElementById("details").value;
-    
-    const herEmail = "HER_EMAIL_GOES_HERE"; // 🔄 Replace this with her actual email
-
-    emailjs.send("service_su2vb15", "template_61i9erk", {
-      grievance_type: type,
-      grievance_details: details,
-      to_email: herEmail
-    }).then(() => {
-      alert("Grievance submitted successfully 🥹❤️");
-      saveGrievance(type, details);
-      form.reset();
-    }).catch(err => {
-      alert("Failed to send grievance 😭 Check console");
-      console.error(err);
-    });
-  });
-
-  displayGrievances();
-</script>
 
 </body>
 </html>
